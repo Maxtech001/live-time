@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: blue;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .clock-container {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .clock {
+            padding: 20px;
+            border: 2px solid white;
+            border-radius: 10px;
+            font-size: 24px;
+        }
+        .time {
+            font-size: 40px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock-container">
+        <div class="clock">
+            <h2>UK & Ireland</h2>
+            <p class="time" id="uk-time"></p>
+        </div>
+        <div class="clock">
+            <h2>Cameroon & Nigeria</h2>
+            <p class="time" id="ng-time"></p>
+        </div>
+    </div>
+
+    <script>
+        function updateClocks() {
+            const ukTime = new Date().toLocaleTimeString("en-GB", { timeZone: "Europe/London", hour12: true });
+            const ngTime = new Date().toLocaleTimeString("en-GB", { timeZone: "Africa/Lagos", hour12: true });
+            
+            document.getElementById("uk-time").textContent = ukTime;
+            document.getElementById("ng-time").textContent = ngTime;
+        }
+        
+        setInterval(updateClocks, 1000);
+        updateClocks();
+    </script>
+</body>
+</html>
